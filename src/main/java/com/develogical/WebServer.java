@@ -26,6 +26,7 @@ public class WebServer {
     server.start();
   }
 
+  // Test Class
   static class Website extends HttpServlet {
 
     @Override
