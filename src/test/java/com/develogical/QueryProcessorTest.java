@@ -12,8 +12,7 @@ public class QueryProcessorTest {
 
     @Test
     public void returnsEmptyStringIfCannotProcessQuery() throws Exception {
-//        assertThat(queryProcessor.process("test"), is(""));
-        assert(false);
+        assertThat(queryProcessor.process("test"), is(""));
     }
 
     @Test
@@ -24,5 +23,13 @@ public class QueryProcessorTest {
     @Test
     public void isNotCaseSensitive() throws Exception {
         assertThat(queryProcessor.process("shakespeare"), containsString("playwright"));
+        assertThat(queryProcessor.process("HiTleR"), containsString("Nationalsozialistische " +
+                "Deutsche Arbeiterpartei"));
+    }
+
+    @Test
+    public void knowsAboutHitler() throws Exception {
+        assertThat(queryProcessor.process("Hitler"), containsString("Nationalsozialistische " +
+                "Deutsche Arbeiterpartei"));
     }
 }
